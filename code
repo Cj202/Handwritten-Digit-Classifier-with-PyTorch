@@ -5,7 +5,7 @@ import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 
-# ✅ 1. Load the MNIST Dataset
+#. Load the MNIST Dataset
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
 trainset = torchvision.datasets.MNIST(root='./data', train=True, download=True, transform=transform)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
@@ -13,7 +13,7 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 testset = torchvision.datasets.MNIST(root='./data', train=False, download=True, transform=transform)
 testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=False)
 
-# ✅ 2. Define a Simple Neural Network Model
+#. Define a Simple Neural Network Model
 class SimpleNN(nn.Module):
     def __init__(self):
         super(SimpleNN, self).__init__()
@@ -28,7 +28,7 @@ class SimpleNN(nn.Module):
         x = self.fc3(x)  # Output layer (no activation, as we'll use softmax in loss)
         return x
 
-# ✅ 3. Train the Model
+#. Train the Model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = SimpleNN().to(device)
 criterion = nn.CrossEntropyLoss()
@@ -47,7 +47,7 @@ for epoch in range(epochs):
         running_loss += loss.item()
     print(f"Epoch {epoch+1}, Loss: {running_loss / len(trainloader)}")
 
-# ✅ 4. Test the Model
+#. Test the Model
 correct = 0
 total = 0
 with torch.no_grad():
@@ -60,7 +60,7 @@ with torch.no_grad():
 
 print(f"Test Accuracy: {100 * correct / total:.2f}%")
 
-# ✅ 5. Display Some Predictions
+#. Display Some Predictions
 dataiter = iter(testloader)
 images, labels = next(dataiter)
 outputs = model(images.to(device))
