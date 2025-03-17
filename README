@@ -1,0 +1,9 @@
+📌 Overview
+This project is a handwritten digit classifier built using PyTorch and the MNIST dataset. It trains a simple neural network to recognize digits from 0 to 9.
+
+🚀 Features
+✅ Loads the MNIST dataset (handwritten digits).
+✅ Trains a neural network to classify digits.
+✅ Uses PyTorch for model training.
+✅ Saves and loads the trained model.
+✅ Tests the model's accuracy on unseen data.
